@@ -1,2 +1,2 @@
-# RestaurantSite
+# URBAN TASTE
 Site for Restaurant
