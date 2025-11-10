@@ -1,0 +1,551 @@
+:root {
+    --orange-color: #ff4d00;
+    --orange-hover-color: #e23f00;
+    --orange-loading-color: #ff7a33;
+    --font-color: rgb(56, 15, 15);
+    --submenu-responsive-bg-color: rgb(46, 10, 10);
+    --header-color: hsla(34, 47%, 97%, 0.722);
+    --bg-color: hsl(34, 47%, 97%);
+    --form-reservation-color: hsl(40, 100%, 99%);
+    --white-color: #fff;
+    --border-color: #ccc;
+    --border-bottom: hsla(26, 24%, 13%, 0.144);
+    --footer-color: #222222;
+}
+
+html, body {
+  width: 100%;
+  overflow-x: hidden;
+}
+
+
+[id] {
+    scroll-margin-top: 70px;
+}
+
+.no-scroll {
+    overflow: hidden;
+    height: 100vh;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Lato', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    scroll-behavior: smooth;
+    outline: none;
+    caret-color: transparent;
+}
+
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    display: flex;  
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 100px;
+    background-color: var(--header-color);
+    width: 100%;
+    height: 80px;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border-bottom);
+    box-shadow: 0 7px 6px 2px rgba(0, 0, 0, .3);
+    z-index: 999;
+}
+
+header h2 {
+    color: var(--font-color);
+    font-size: 3em;
+}
+
+.navigation ul {
+    display: flex;
+    gap: 30px;
+    list-style: none;
+}
+
+.navigation ul li {
+    position: relative;
+}
+
+.navigation ul li a {
+    text-decoration: none;
+    color: var(--font-color);
+    font-size: 1.2em;
+}
+
+.navigation ul > li > a:hover {
+    color: var(--orange-hover-color);
+}
+
+.navigation li::after {
+    content: '';
+    display: block;
+    background-color: var(--orange-hover-color);
+    height: 2px;
+    border-radius: 5px;
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.5s;
+}
+
+.navigation > ul > li:hover::after {
+    transform-origin: left;
+    transform: scaleX(1);
+}
+
+.submenu {
+    background-color: var(--bg-color);
+    overflow: hidden;
+}
+
+.submenu.open {
+    max-height: 300px;
+    opacity: 1;
+}
+
+.submenu li {
+    position: relative;
+    backdrop-filter: blur(50px);
+    -webkit-backdrop-filter: blur(50px);
+}
+
+.navigation ul li .submenu li a:hover {
+    color: var(--white-color);
+}
+
+.submenu a {
+    display: block;
+    width: 100%;
+    padding: 10px 20px;
+    text-align: start;
+    font-size: 1.1em;
+}
+
+.submenu li:hover a {
+    color: var(--white-color);
+    background-color: var(--orange-hover-color);
+}
+
+ul.submenu {
+    position: absolute;
+    display: block;
+    max-height: 0;
+    transition: max-height 0.4s ease-in-out;
+}
+
+li:hover .submenu {
+    max-height: 500px;
+}
+
+.navigation ul li > a[href="#menu"] {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    padding: 0 10px;
+
+}
+
+.navigation ul li > a[href="#menu"]::after {
+    content: "▼";
+    position: relative;
+    top: 3px;
+    font-size: 0.6em;
+    transition: transform 0.3s ease;
+}
+
+.menu-toggle.active::after {
+    transform: translateY(0%) rotate(180deg);
+}
+
+.hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 20px;
+    cursor: pointer;
+    z-index: 1001;
+}
+
+.hamburger span {
+    display: block;
+    height: 3px;
+    width: 100%;
+    background-color: var(--font-color);
+    border-radius: 3px;
+    transition: all 0.3s ease;
+}
+
+.hamburger.active span:nth-child(1) {
+    transform: rotate(45deg) translateY(12px);
+}
+.hamburger.active span:nth-child(2) {
+    opacity: 0;
+}
+.hamburger.active span:nth-child(3) {
+    transform: rotate(-45deg) translateY(-12px);
+}
+
+section {
+    min-height: 100vh;
+}
+
+.hero {
+    background: linear-gradient(rgba(0, 0, 0, 0.6)), url(images/hero.jpeg) center/cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.hero-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    color: var(--white-color);
+}
+
+.hero h1 {
+    font-size: 6.5em;
+}
+
+.hero p {
+    font-size: 2em;
+}
+
+.hero a {
+    height: 80px;
+    width: 160px;
+    padding: 20px 0;
+    font-size: 1.8em;
+    color: var(--white-color);
+    text-decoration: none;
+    background-color: var(--orange-color);
+    border-radius: 15px;
+    transition: 0.3s;
+}
+
+.hero a:hover {
+    background-color: var(--orange-hover-color);
+}
+
+.menu-wrapper {
+    max-width: 4000px;
+}
+
+.menu h1 {
+    padding-top: 30px;
+    text-align: center;
+    font-size: 4em;
+    color: rgb(56, 15, 15);
+}
+
+.menu h2 {
+    font-size: 3em;
+    color: rgb(56, 15, 15);
+    margin: 50px 100px 32px 100px;
+    padding-bottom: 20px;
+    border-bottom: 2px solid var(--orange-color);
+    scroll-margin-top: 100px;
+}
+
+.menu-grid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 30px;
+    padding: 0 5%;
+    margin: 40px 0;
+}
+
+.menu-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    width: 100%;
+    overflow: hidden;   
+    transition: 0.3s;
+}
+
+.menu-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0px 20px 15px 2px rgba(0,0,0,0.40);
+}
+
+.menu-card img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 4/3;
+    object-fit: cover;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    transition: transform 0.4s ease;
+}
+
+.menu-card:hover img {
+    transform: scale(1.05);
+}
+
+.menu-card h3 {
+    margin: 20px 0 15px 0;
+    font-size: 1.7em;
+    color: var(--font-color);
+    text-align: center;
+}
+
+.menu-card p {
+    font-size: 1.1em;
+    color: var(--font-color);
+    text-align: start;
+    padding: 0 3px;
+}
+
+.menu-card h3,
+.menu-card p {
+    padding: 0 15px;
+}
+
+.menu-card h4 {
+    color: var(--orange-color);
+    font-weight: bold;
+    font-size: 1.5em;
+    text-align: end;
+    margin: 10px 25px 20px 0;
+}
+
+.reservations {
+    background-color: var(--white-color);
+}
+
+.reservations h1{
+    padding-top: 30px;
+    text-align: center;
+    font-size: 4em;
+    color: var(--font-color);
+}
+
+.reservation-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    max-width: 768px;
+    margin: 70px auto;
+    padding: 40px;
+    background-color: var(--bg-color);
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+}
+
+.form-row {
+    display: flex;
+    gap: 20px;
+}
+
+.form-group {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    font-weight: 600;
+    margin-bottom: 6px;
+}
+
+input, select, textarea {
+    padding: 12px;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    font-size: 1rem;
+    outline: none;
+    transition: border 0.2s ease;
+}
+
+input:focus, select:focus, textarea:focus {
+    border-color: var(--orange-color);
+}
+
+.full-width {
+    width: 100%;
+}
+
+.btn {
+    background: var(--orange-color);
+    color: white;
+    border: none;
+    padding: 14px;
+    border-radius: 8px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.btn:hover {
+    background: var(--orange-hover-color);
+}
+
+.btn.loading {
+    background: var(--orange-loading-color);
+    cursor: not-allowed;
+}
+
+.reservation-message {
+    text-align: center;
+    margin-top: 30px;
+    font-size: 1.4em;
+    color: var(--font-color);
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+.reservation-message.show {
+    opacity: 1;
+}
+
+.contact-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 180px;
+    margin: 100px auto;
+}
+
+.contact h1{
+    padding-top: 30px;
+    text-align: center;
+    font-size: 4em;
+    color: var(--font-color);
+}
+
+.contact-content {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    text-align: left;
+    max-width: 500px;
+}
+
+.address, .contacts, .business-hours, .follow-us {
+    line-height: 1.7;
+}
+
+.contact-content h3 {
+    color: var(--orange-color);
+    font-size: 1.9em;
+}
+
+.contact-content p {
+    color: var(--font-color);
+    font-size: 1.1em;
+}
+
+.social-icons {
+    display: flex;
+    gap: 15px;
+}
+
+.social-icons a {
+    color: var(--font-color);
+    transition: 0.3s;
+    font-size: 1.7em;
+}
+
+.social-icons a:hover {
+    color: var(--orange-hover-color);
+    transform: scale(1.2);
+}
+
+.contact-wrapper img {
+    width: 590px;
+    border: 2px solid var(--orange-color);
+    border-radius: 10px;
+}
+
+footer {
+    height: 400px;
+    background-color: var(--footer-color);
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 50px;
+}
+
+.footer-text {
+    line-height: 2;
+    text-align: center;
+}
+
+.footer-text h1 {
+    color: var(--white-color);
+    font-size: 3em;
+}
+
+.footer-text p {
+    color: var(--white-color);
+    font-size: 1.2em;
+}
+
+.footer-links {
+    display: flex;
+    gap: 100px;
+    margin: 30px 0;
+}
+
+.footer-links ul {
+    list-style: none;
+}
+
+.footer-links ul li a {
+    text-decoration: none;
+    color: var(--white-color);
+    line-height: 2.5;
+    font-size: 1.2em;
+}
+
+.footer-links ul li a:hover {
+    color: var(--orange-hover-color);
+    transition: 0.3s;
+}
+
+.footer-contact {
+    color: var(--white-color);
+    line-height: 2.5;
+    font-size: 1.2em;
+    text-align: center;
+}
+
+.footer-contact-socials {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2em;
+}
+
+.footer-contact-socials a {
+    color: var(--white-color);
+}
+
+.footer-contact-socials a:hover {
+    color: var(--orange-hover-color);
+    transition: 0.3s;
+}
+
+footer .copyright {
+    color: var(--white-color);
+    text-align: center;
+    margin: 30px auto;
+}
