@@ -59,7 +59,7 @@ form.addEventListener('submit', (e) => {
 
         let message = document.createElement('div');
         message.classList.add('reservation-message');
-        message.innerHTML = `<strong>Reservation Confirmed!</strong><br>We look forward to seeing you at Urban Grill.`;
+        message.innerHTML = `<strong>Reservation Confirmed!</strong><br>We look forward to seeing you at Urban Taste.`;
         form.appendChild(message);
 
         setTimeout(() => {
